@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git Learning — Start Here</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --success: #3fb950;
+      --code-bg: #21262d;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      color: var(--accent);
+    }
+    p { margin: 0.75rem 0; color: var(--muted); }
+    .subtitle { color: var(--muted); font-size: 1rem; margin-bottom: 2rem; }
+    section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .command-block {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      margin: 0.75rem 0;
+      font-family: ui-monospace, monospace;
+      font-size: 0.9rem;
+      overflow-x: auto;
+    }
+    .command-block code { color: var(--text); }
+    .comment { color: var(--muted); }
+    .step { font-weight: 600; color: var(--accent); margin-top: 1rem; margin-bottom: 0.25rem; }
+    ul { margin: 0.5rem 0; padding-left: 1.5rem; color: var(--muted); }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .tip { background: rgba(56,139,253,0.1); border-left: 3px solid var(--accent); padding: 0.75rem 1rem; border-radius: 0 6px 6px 0; margin: 1rem 0; font-size: 0.95rem; }
+    .source { font-size: 0.85rem; color: var(--muted); margin-top: 2rem; }
+  </style>
+</head>
+<body>
+  <h1>Git Learning — Start Here</h1>
+  <p class="subtitle">A minimal guide from GitHub docs. No jargon, just what you need to start.</p>
+
+  <section>
+    <h2>What is Git?</h2>
+    <p>Git is a <strong>version control</strong> system. It keeps a history of your project so you can:</p>
+    <ul>
+      <li>See <strong>what</strong> changed, <strong>when</strong>, and <strong>who</strong> changed it</li>
+      <li>Go back to any earlier version if needed</li>
+      <li>Work with others on the same project without overwriting each other</li>
+    </ul>
+    <p>A <strong>repository</strong> (repo) is your project folder plus its full history. GitHub hosts repos on the web so you can share and collaborate.</p>
+  </section>
+
+  <section>
+    <h2>Essential commands (plain English)</h2>
+    <table style="width:100%; border-collapse: collapse; font-size: 0.95rem;">
+      <tr style="border-bottom: 1px solid var(--border);"><th style="text-align:left; padding: 0.5rem 0;">Command</th><th style="text-align:left; padding: 0.5rem 0;">What it does</th></tr>
+      <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 0.5rem 0;"><code>git init</code></td><td style="color: var(--muted);">Turn the current folder into a Git repo</td></tr>
+      <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 0.5rem 0;"><code>git clone &lt;url&gt;</code></td><td style="color: var(--muted);">Download a repo from GitHub to your computer</td></tr>
+      <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 0.5rem 0;"><code>git status</code></td><td style="color: var(--muted);">See which files changed (new, modified, staged)</td></tr>
+      <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 0.5rem 0;"><code>git add &lt;file&gt;</code></td><td style="color: var(--muted);">Stage changes (prepare them for the next snapshot)</td></tr>
+      <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 0.5rem 0;"><code>git commit -m "message"</code></td><td style="color: var(--muted);">Save a snapshot with a short description</td></tr>
+      <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 0.5rem 0;"><code>git push</code></td><td style="color: var(--muted);">Upload your commits to GitHub</td></tr>
+      <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 0.5rem 0;"><code>git pull</code></td><td style="color: var(--muted);">Download latest changes from GitHub and merge into your branch</td></tr>
+      <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 0.5rem 0;"><code>git fetch</code></td><td style="color: var(--muted);">Download latest from GitHub but don’t merge yet (lets you inspect first)</td></tr>
+      <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 0.5rem 0;"><code>git log</code></td><td style="color: var(--muted);">Show commit history (who, when, message). Use <code>git log --oneline</code> for a short list</td></tr>
+      <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 0.5rem 0;"><code>git merge &lt;branch&gt;</code></td><td style="color: var(--muted);">Combine another branch into your current branch (e.g. merge <code>feature-a</code> into <code>main</code>)</td></tr>
+      <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 0.5rem 0;"><code>git rebase &lt;branch&gt;</code></td><td style="color: var(--muted);">Replay your commits on top of another branch (linear history; use with care on shared branches)</td></tr>
+      <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 0.5rem 0;"><code>git stash</code></td><td style="color: var(--muted);">Temporarily save uncommitted changes so you can switch branches; <code>git stash pop</code> brings them back</td></tr>
+      <tr><td style="padding: 0.5rem 0;"><code>git branch</code></td><td style="color: var(--muted);">List branches; <code>git checkout &lt;branch&gt;</code> switches to one</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>Fetch vs Pull — what’s the difference?</h2>
+    <p><strong>Both</strong> download new commits from GitHub. The difference is what happens to your current branch.</p>
+    <ul>
+      <li><strong>git pull</strong> = download <em>and</em> merge into your branch in one step. Your files update immediately.</li>
+      <li><strong>git fetch</strong> = download only. Your working files don’t change yet; you can look at what arrived, then decide to merge (or not).</li>
+    </ul>
+    <p class="step">When to use pull</p>
+    <p>You just want the latest from <code>main</code> and you’re fine with merging right away:</p>
+    <div class="command-block">
+      <code>git checkout main<br>
+git pull</code>
+    </div>
+    <p class="step">When to use fetch</p>
+    <p>You have local work and want to <em>see</em> what’s on GitHub before changing your branch. For example: “Did someone push to <code>main</code>? Let me check first.”</p>
+    <div class="command-block">
+      <code><span class="comment"># Download latest from GitHub (your files don’t change yet)</span><br>
+git fetch origin<br>
+<br>
+<span class="comment"># See what’s new on main (compare your branch to origin/main)</span><br>
+git log main..origin/main --oneline<br>
+<br>
+<span class="comment"># If it looks good, now merge those changes into your current branch</span><br>
+git merge origin/main</code>
+    </div>
+    <p class="tip">Rule of thumb: use <strong>pull</strong> when you’re okay with “just get the latest.” Use <strong>fetch</strong> when you want to look before merging (e.g. you have uncommitted changes or you’re on a feature branch).</p>
+  </section>
+
+  <section>
+    <h2>Other commands — when to use them</h2>
+    <p class="step">git stash</p>
+    <p><strong>Scenario:</strong> You’re in the middle of edits on <code>feature-x</code>. Someone asks you to quickly fix a bug on <code>main</code>. You don’t want to commit half-done work.</p>
+    <div class="command-block">
+      <code>git stash<br>
+git checkout main<br>
+<span class="comment"># … fix the bug, commit, push …</span><br>
+git checkout feature-x<br>
+git stash pop</code>
+    </div>
+    <p>Your previous edits reappear and you can continue. Use <code>git stash list</code> if you have multiple stashes.</p>
+    <p class="step">git log</p>
+    <p><strong>Scenario:</strong> “What changed recently? Who added this line?”</p>
+    <div class="command-block">
+      <code>git log --oneline -10<br>
+<span class="comment"># Or see which commits touched a specific file:</span><br>
+git log --oneline -- README.md</code>
+    </div>
+    <p class="step">merge vs rebase</p>
+    <p><strong>Merge</strong> = “Add a merge commit that joins two branches.” History shows both branches; safe and clear for shared branches (e.g. merging a feature into <code>main</code>).</p>
+    <p><strong>Rebase</strong> = “Replay my commits on top of another branch.” History looks like a straight line; nice for cleaning up before a PR. Avoid rebasing branches that others are already using (it rewrites history).</p>
+    <p class="tip">When in doubt, use <strong>merge</strong>. Use rebase only on your own branch (e.g. <code>git rebase main</code> to update your feature branch with latest <code>main</code> before opening a PR).</p>
+  </section>
+
+  <section>
+    <h2>Practical example 1 — Start a new repo and put it on GitHub</h2>
+    <p>First create an <strong>empty</strong> repo on GitHub (no README). Then run these in a terminal (same folder as your project):</p>
+    <div class="command-block">
+      <code>git init my-repo<br>
+cd my-repo<br>
+<br>
+<span class="comment"># Create a file (e.g. README)</span><br>
+touch README.md<br>
+<br>
+<span class="comment"># Tell Git to track it and save first snapshot</span><br>
+git add README.md<br>
+git commit -m "add README to initial commit"<br>
+<br>
+<span class="comment"># Link to your GitHub repo (replace with your URL)</span><br>
+git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPO-NAME.git<br>
+<br>
+<span class="comment"># Upload to GitHub</span><br>
+git push --set-upstream origin main</code>
+    </div>
+  </section>
+
+  <section>
+    <h2>Practical example 2 — Get someone else’s repo and contribute</h2>
+    <p>Download the repo, make a branch, edit files, then push your branch so you can open a Pull Request on GitHub.</p>
+    <div class="command-block">
+      <code><span class="comment"># Download the repo (replace with real URL)</span><br>
+git clone https://github.com/owner/repo.git<br>
+cd repo<br>
+<br>
+<span class="comment"># Create and switch to a new branch</span><br>
+git branch my-branch<br>
+git checkout my-branch<br>
+<br>
+<span class="comment"># Edit files (e.g. file1.md, file2.md), then:</span><br>
+git add file1.md file2.md<br>
+git commit -m "my snapshot"<br>
+git push --set-upstream origin my-branch</code>
+    </div>
+    <p class="tip">Then on GitHub: open a <strong>Pull Request</strong> from <code>my-branch</code> to ask maintainers to merge your changes.</p>
+  </section>
+
+  <section>
+    <h2>Practical example 3 — Update your copy and work on an existing branch</h2>
+    <p>You already have the repo locally; new work was pushed to a branch like <code>feature-a</code>. Stay in sync and push your edits.</p>
+    <div class="command-block">
+      <code>cd repo<br>
+<br>
+<span class="comment"># Get latest from GitHub</span><br>
+git pull<br>
+<br>
+<span class="comment"># Switch to the branch you work on</span><br>
+git checkout feature-a<br>
+<br>
+<span class="comment"># After editing file1.md:</span><br>
+git add file1.md<br>
+git commit -m "edit file1"<br>
+git push</code>
+    </div>
+  </section>
+
+  <section>
+    <h2>GitHub flow in one sentence</h2>
+    <p>Create a <strong>branch</strong> → make <strong>changes</strong> → <strong>commit</strong> and <strong>push</strong> → open a <strong>Pull Request</strong> → after review, <strong>merge</strong> and (optionally) delete the branch.</p>
+  </section>
+
+  <p class="source">Content based on <a href="https://docs.github.com/en/get-started/using-git/about-git" target="_blank" rel="noopener">GitHub: About Git</a> and <a href="https://docs.github.com/en/get-started/quickstart/github-flow" target="_blank" rel="noopener">GitHub flow</a>.</p>
+</body>
+</html>
