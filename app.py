@@ -21,15 +21,6 @@ print("Govind")
 print("Hi This is Mouli")
 
 a = 5
-
-print("New line")
-
-print("asdsaf")
-
-print("XYZ---A")
-
-print("This is rebase demo")
-print("Feature A")
-print("Feature b")
-
-print("XYZ --- advanceddddd")
+print ("This changes is made by ali in ali branch only")
+print ("this is new file")
+Print ("THis is again a new line")
