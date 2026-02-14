@@ -29,3 +29,7 @@ print("asdsaf")
 print("XYZ---A")
 
 print("This is rebase demo")
+print("Feature A")
+print("Feature b")
+
+print("XYZ --- advanceddddd")
