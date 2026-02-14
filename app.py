@@ -5,6 +5,7 @@ print("Prashant")
 print("This is the Git Class")
 
 print("Xyz")
+print("Xyz2")
 
 a = 6
 print ("This is added by Ali Raza")
