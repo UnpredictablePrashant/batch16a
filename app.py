@@ -23,3 +23,7 @@ a = 5
 print("New line")
 
 print("asdsaf")
+
+
+print("hi")
+print('Xyz')
